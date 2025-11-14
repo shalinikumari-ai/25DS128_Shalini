@@ -9,31 +9,80 @@ It organizes data into tables (relations) composed of rows and columns.
 
 3. Query to create table in database -
   create table personal_info ( name varchar (20), age int , location varchar (20));
+  Output - Query OK, 0 rows affected (0.07 sec)
 
 4. Query to insert data in the created table -
    insert into personal_info values ("Shalini", 20, "Delhi"), ("Shreya", 25, "Pune"), ("Sampada", 22, "Patna");
+   Output - Query OK, 3 rows affected (0.05 sec)
+            Records: 3  Duplicates: 0  Warnings: 0
 
 5. Query to show table that has been created -
    select * from personal_info;
+ +---------+------+----------+
+ | name    | age  | location |
+ +---------+------+----------+
+ | Shalini |   20 | Delhi    |
+ | Shreya  |   25 | Pune     |
+ | Sampada |   22 | Patna    |
+ +---------+------+----------+
 
 6. Query to describe table (to show data as well as datatype of that particular data) -
     desc personal_info;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| name     | varchar(20) | YES  |     | NULL    |       |
+| age      | int         | YES  |     | NULL    |       |
+| location | varchar(20) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
 
 7. Query to get the data of a particular row -
     select name from personal_info;
++---------+
+| name    |
++---------+
+| Shalini |
+| Shreya  |
+| Sampada |
++---------+
 
 8. Query to get the data of those whose age is greater than 25 -
     select * from personal_info where age > 25;
++-----------+------+----------+
+| name      | age  | location |
++-----------+------+----------+
+| Vaishnavi |   28 | Bhopal   |
++-----------+------+----------+
 
 9. Query to edit a particular value in the existing table to a new value -
    Update personal_info set name = 'Kritika' where age = 28;
    and then again write the query select * from personal_info;
    then u will get the updated table as output
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shalini  |   20 | Delhi    |
+| Shreya   |   25 | Pune     |
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
+| Ayushi   |   24 | Mumbai   |
+| Kritika  |   28 | Bhopal   |
++----------+------+----------+
 
 10. Query to delete a particular data from the table -
     delete from personal_info where age = 24;
     and the again pass the command  select * from personal_info;
     then u will get the table as output in which that value will be deleted which u have specified in the delete command
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shalini  |   20 | Delhi    |
+| Shreya   |   25 | Pune     |
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
+| Kritika  |   28 | Bhopal   |
++----------+------+----------+
+
 
 There are two different types of commands in MySQL :
 DDL (Data definition language)
@@ -55,5 +104,92 @@ Delete - deletes the data from the table
 
 we can also write commands using operators as:
 select * from personal_info where age >= 23 and age <= 28;
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shreya   |   25 | Pune     |
+| Tanishka |   23 | Lucknow  |
+| Kritika  |   28 | Bhopal   |
++----------+------+----------+
+
 select * from personal_info where age >= 23 or age <= 28;
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shalini  |   20 | Delhi    |
+| Shreya   |   25 | Pune     |
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
+| Kritika  |   28 | Bhopal   |
++----------+------+----------+
+
 select * from personal_info where not age >= 23 or age <= 28;
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shalini  |   20 | Delhi    |
+| Shreya   |   25 | Pune     |
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
+| Kritika  |   28 | Bhopal   |
++----------+------+----------+
+
+11. Query to find data using some value which is like the data which we want to retrieve
+    select * from personal_info where name like "S%";
++---------+------+----------+
+| name    | age  | location |
++---------+------+----------+
+| Shalini |   20 | Delhi    |
+| Shreya  |   25 | Pune     |
+| Sampada |   22 | Patna    |
++---------+------+----------+
+
+    select * from personal_info where name like "_a%";
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
++----------+------+----------+
+
+12. Query to arrange the table in ascending or descending order
+     select * from personal_info order by age;
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shalini  |   20 | Delhi    |
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
+| Shreya   |   25 | Pune     |
+| Kritika  |   28 | Bhopal   |
++----------+------+----------+
+   
+   select * from personal_info order by age desc;
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Kritika  |   28 | Bhopal   |
+| Shreya   |   25 | Pune     |
+| Tanishka |   23 | Lucknow  |
+| Sampada  |   22 | Patna    |
+| Shalini  |   20 | Delhi    |
++----------+------+----------+
+
+13.  select * from personal_info limit 4;
++----------+------+----------+
+| name     | age  | location |
++----------+------+----------+
+| Shalini  |   20 | Delhi    |
+| Shreya   |   25 | Pune     |
+| Sampada  |   22 | Patna    |
+| Tanishka |   23 | Lucknow  |
++----------+------+----------+
+
+14. select count(*), avg(age), max(age), min(age) from personal_info;
++----------+----------+----------+----------+
+| count(*) | avg(age) | max(age) | min(age) |
++----------+----------+----------+----------+
+|        5 |  23.6000 |       28 |       20 |
++----------+----------+----------+----------+
+
+15.
