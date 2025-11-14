@@ -1,0 +1,59 @@
+DBMS - database management system
+
+1. Relational Database Management System (RDBMS)
+It organizes data into tables (relations) composed of rows and columns.
+
+2. Query to create database -
+ CREATE DATABASE (name of database);
+ USE (name of database);
+
+3. Query to create table in database -
+  create table personal_info ( name varchar (20), age int , location varchar (20));
+
+4. Query to insert data in the created table -
+   insert into personal_info values ("Shalini", 20, "Delhi"), ("Shreya", 25, "Pune"), ("Sampada", 22, "Patna");
+
+5. Query to show table that has been created -
+   select * from personal_info;
+
+6. Query to describe table (to show data as well as datatype of that particular data) -
+    desc personal_info;
+
+7. Query to get the data of a particular row -
+    select name from personal_info;
+
+8. Query to get the data of those whose age is greater than 25 -
+    select * from personal_info where age > 25;
+
+9. Query to edit a particular value in the existing table to a new value -
+   Update personal_info set name = 'Kritika' where age = 28;
+   and then again write the query select * from personal_info;
+   then u will get the updated table as output
+
+10. Query to delete a particular data from the table -
+    delete from personal_info where age = 24;
+    and the again pass the command  select * from personal_info;
+    then u will get the table as output in which that value will be deleted which u have specified in the delete command
+
+There are two different types of commands in MySQL :
+DDL (Data definition language)
+DML (Data manipulation language) 
+
+DDL (Data definition language)
+this command make changes the structure of the table
+Create - creates the table
+Alter - changes the existing table
+Drop - Remove the database
+Truncate - Remove the table
+
+DML (Data manipulation language)
+this command changes the data inserted in the table
+Select - to select the data from the table and give it as output
+Update - updates the data of the table
+Insert - inserts data inside the table
+Delete - deletes the data from the table
+
+we can also write commands using operators as:
+select * from personal_info where age >= 23 and age <= 28;
+select * from personal_info where age >= 23 or age <= 28;
+select * from personal_info where not age >= 23 or age <= 28;
